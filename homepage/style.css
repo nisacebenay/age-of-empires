@@ -1,0 +1,33 @@
+body {
+    border: 3px solid black;
+}
+
+h1 {
+    text-align: center;
+    flex-grow: 1;
+}
+ h2 {
+     padding-right: 10%;
+    
+ }
+
+.heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+img {
+    width: 80%;
+    align-self: center;
+}
+.maincontainer {
+    display: flex;
+    flex-direction: column;
+}

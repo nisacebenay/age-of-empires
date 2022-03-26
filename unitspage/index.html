@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Units Page</title>
+
+
+</head>
+
+<body>
+    <div class="maincontainer">
+        <div class="heading">
+            <h1><strong>Units Page</strong></h1>
+            <div class="pages">
+                <h2><a href="">Home</a></h2>
+                <h2> <a href="">Units</a></h2>
+            </div>
+
+        </div>
+    </div>
+    <h2>Ages</h2>
+    <div class="radiobuttons">
+        <input type="radio" id="All" name="ages" value="All">
+        <label for="All">All</label><br>
+        <input type="radio" id="Dark" name="ages" value="Dark">
+        <label for="Dark">Dark</label><br>
+        <input type="radio" id="Feudal" name="ages" value="Feudal">
+        <label for="Feudal">Feudal</label><br>
+        <input type="radio" id="Castle" name="ages" value="Castle">
+        <label for="Castle">Castle</label><br>
+        <input type="radio" id="Imperial" name="ages" value="Imperial">
+        <label for="Imperial">Imperial</label>
+    </div>
+    <br>
+    <div>
+        <h2>Costs</h2>
+        <div class="costtypeone">
+            <input type="checkbox" id="cost1" name="cost1" value="Wood">
+            <label for="cost1">Wood</label>
+            &nbsp;&nbsp;&nbsp;
+            <div class="slidecontainer">
+                <input type="range" min="0" max="200" value="50" class="slider" id="myRange">
+            </div>
+        </div>
+        <br>
+        <div class="costtypetwo">
+            <input type="checkbox" id="cost2" name="cost2" value="Food">
+            <label for="cost2">Food</label>
+            &nbsp;&nbsp; &nbsp;
+            <div class="slidecontainer">
+                <input type="range" min="0" max="200" value="50" class="slider" id="myRange">
+            </div>
+        </div>
+        <br>
+        <div class="costtypethree">
+            <input type="checkbox" id="cost3" name="cost3" value="Gold">
+            <label for="cost3">Gold</label>
+            &nbsp; &nbsp;&nbsp;
+            <div class="slidecontainer">
+                <input type="range" min="0" max="200" value="50" class="slider" id="myRange">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <table style="width:100%">
+            <tr>
+                <th><strong>id</strong></th>
+                <th><strong>name</strong></th>
+                <th><strong>age</strong></th>
+                <th><strong>cost</strong></th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>Archer</th>
+                <th>Feudal</th>
+                <th>Food:25, Gold:45</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>Crossbowman</th>
+                <th>Castle</th>
+                <th>Wood:25, Gold:45</th>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
