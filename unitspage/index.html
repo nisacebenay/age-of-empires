@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
     <title>Units Page</title>
 
 
 </head>
 
-<body>
+<body onload="loadData()">
     <div class="maincontainer">
         <div class="heading">
             <h1><strong>Units Page</strong></h1>
@@ -67,24 +68,12 @@
     </div>
     <br>
     <div>
-        <table style="width:100%">
+        <table id="units-table" style="width:100%">
             <tr>
-                <th><strong>id</strong></th>
-                <th><strong>name</strong></th>
-                <th><strong>age</strong></th>
-                <th><strong>cost</strong></th>
-            </tr>
-            <tr>
-                <th>1</th>
-                <th>Archer</th>
-                <th>Feudal</th>
-                <th>Food:25, Gold:45</th>
-            </tr>
-            <tr>
-                <th>2</th>
-                <th>Crossbowman</th>
-                <th>Castle</th>
-                <th>Wood:25, Gold:45</th>
+                <th style="background-color: black; color: white;">id</th>
+                <th style="background-color: black; color: white;">name</th>
+                <th style="background-color: black; color: white;">age</th>
+                <th style="background-color: black; color: white;">cost</th>
             </tr>
         </table>
     </div>
