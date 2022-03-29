@@ -7,8 +7,8 @@ function loadData() {
         .then(json => setTableData(json, null));
 }
 
-function setTableData(data, filter) {
-    var unitsTable = document.getElementById("units-table");
+function onFilterChanged() {
+    console.log("Loading data...")
     // filter template:
     // var filter = {
     //     AgeFilter: "Feudal",
@@ -18,7 +18,27 @@ function setTableData(data, filter) {
     //         Gold: 0
     //     }
     // }
-    
+    var filter = {
+        AgeFilter: null,
+        CostFilter: {
+            Food: null,
+            Wood: null,
+            Gold: null
+        }
+    };
+    // if (radiobutton.checked) {
+    //     filter.AgeFilter = radiobutton.id
+    // }
+    // data/age-of-empires-units.json dosyasını oku.
+    fetch("../data/age-of-empires-units.json")
+        .then(response => response.json())
+        .then(json => setTableData(json, null));
+}
+
+function setTableData(data, filter) {
+    var unitsTable = document.getElementById("units-table");
+
+
     var filteredData = applyFilter(data.units, filter);
 
     for (var i = 0; i < filteredData.length; i++) {
@@ -74,13 +94,35 @@ function applyFilter(units, filter) {
     var filteredData = units;
     if (filter != null) {
         filteredData = [];
-       for(var unit of units){
-           // unit'in Age'i filter.AgeFilter'ına eşitse (veya All değilse)
-           // unit'in CostFilter'larının her biri filter.CostFilter'a eşitse
-           filteredData.push(unit);
-       }
+        for (var unit of units) {
+            if (filter.AgeFilter != null) {
+                if (unit.age != filter.AgeFilter) {
+                    continue;
+                }
+            }
+
+            if (filter.CostFilter.Food != null) {
+                if (unit.cost.Food == undefined || unit.cost.Food != filter.CostFilter.Food) {
+                    continue;
+                }
+            }
+
+            if (filter.CostFilter.Wood != null) {
+                if (unit.cost.Wood == undefined || unit.cost.Wood != filter.CostFilter.Wood) {
+                    continue;
+                }
+            }
+
+            if (filter.CostFilter.Gold != null) {
+                if (unit.cost.Gold == undefined || unit.cost.Gold != filter.CostFilter.Gold) {
+                    continue;
+                }
+            }
+            filteredData.push(unit);
+        }
     }
 
     return filteredData;
 }
 
+ 

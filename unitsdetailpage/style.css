@@ -1,0 +1,36 @@
+body {
+    border: 3px solid black;
+}
+
+h1 {
+    text-align: center;
+    flex-grow: 1;
+}
+
+h2 {
+    padding-right: 10%;
+
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.maincontainer {
+    display: flex;
+    flex-direction: column;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+  }

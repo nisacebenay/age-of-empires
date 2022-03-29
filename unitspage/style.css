@@ -29,7 +29,7 @@ h2 {
     flex-direction: column;
 }
 
-.radiobuttons {
+#radiobuttons {
     display: flex;
     flex-direction: row;
 }
