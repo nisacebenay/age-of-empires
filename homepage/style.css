@@ -1,5 +1,6 @@
 body {
     border: 3px solid black;
+    padding: 25px;
 }
 
 h1 {
@@ -24,8 +25,10 @@ h1 {
 }
 
 img {
-    width: 80%;
+    width: 50%;
     align-self: center;
+    padding-bottom: 10%;
+    padding-top: 5%;
 }
 .maincontainer {
     display: flex;

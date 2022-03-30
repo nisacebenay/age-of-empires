@@ -24,46 +24,32 @@
         </div>
     </div>
     <h2>Ages</h2>
-    <div id="radiobuttons">
-        <input type="radio" id="All" name="ages" value="All">
-        <label for="All">All</label><br>
-        <input type="radio" id="Dark" name="ages" value="Dark">
-        <label for="Dark">Dark</label><br>
-        <input type="radio" id="Feudal" name="ages" value="Feudal">
-        <label for="Feudal">Feudal</label><br>
-        <input type="radio" id="Castle" name="ages" value="Castle">
-        <label for="Castle">Castle</label><br>
-        <input type="radio" id="Imperial" name="ages" value="Imperial">
-        <label for="Imperial">Imperial</label>
+    <div class="radiobuttons">
+        <input onchange="onFilterChanged()" id="All" name="ages" class="age-radio" type="radio" checked>All</input>
+        <input onchange="onFilterChanged()" id="Dark" name="ages" class="age-radio" type="radio">Dark</input> 
+        <input onchange="onFilterChanged()" id="Feudal" name="ages" class="age-radio" type="radio">Feudal</input>
+        <input onchange="onFilterChanged()" id="Castle" name="ages" class="age-radio" type="radio">Castle</input>
+        <input onchange="onFilterChanged()" id="Imperial" name="ages" class="age-radio" type="radio">Imperial</input> 
     </div>
     <br>
     <div>
         <h2>Costs</h2>
-        <div class="costtypeone">
-            <input type="checkbox" id="cost1" name="cost1" value="Wood">
-            <label for="cost1">Wood</label>
-            &nbsp;&nbsp;&nbsp;
-            <div class="slidecontainer">
-                <input type="range" min="0" max="200" value="50" class="slider" id="myRange">
-            </div>
+        <div id="woodCost">
+            <input onchange="onFilterChanged()" type="checkbox" id="cost1" name="cost1" value="Wood">Wood</label>
+            <input type="range" onchange="onFilterChanged()" step="5"></input>
+            <a id="woodSliderValue" style="visibility: hidden;"></a>
         </div>
         <br>
-        <div class="costtypetwo">
-            <input type="checkbox" id="cost2" name="cost2" value="Food">
-            <label for="cost2">Food</label>
-            &nbsp;&nbsp; &nbsp;
-            <div class="slidecontainer">
-                <input type="range" min="0" max="200" value="50" class="slider" id="myRange">
-            </div>
+        <div id="foodCost">
+            <input onchange="onFilterChanged()" type="checkbox" id="cost2" name="cost2" value="Food">Food</label>
+            <input type="range" onchange="onFilterChanged()" step="5"></input>
+            <a id="foodSliderValue" style="visibility: hidden;"></a>
         </div>
         <br>
-        <div class="costtypethree">
-            <input type="checkbox" id="cost3" name="cost3" value="Gold">
-            <label for="cost3">Gold</label>
-            &nbsp; &nbsp;&nbsp;
-            <div class="slidecontainer">
-                <input type="range" min="0" max="200" value="50" class="slider" id="myRange">
-            </div>
+        <div id="goldCost">
+            <input onchange="onFilterChanged()" type="checkbox" id="cost3" name="cost3" value="Gold">Gold</label>
+            <input type="range" onchange="onFilterChanged()" step="5"></input>
+            <a id="goldSliderValue" style="visibility: hidden;"></a>
         </div>
     </div>
     <br>

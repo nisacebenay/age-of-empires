@@ -1,23 +1,12 @@
 function loadData() {
-    console.log("Loading data...")
 
-    // data/age-of-empires-units.json dosyasını oku.
     fetch("../data/age-of-empires-units.json")
         .then(response => response.json())
         .then(json => setTableData(json, null));
 }
 
 function onFilterChanged() {
-    console.log("Loading data...")
-    // filter template:
-    // var filter = {
-    //     AgeFilter: "Feudal",
-    //     CostFilter: {
-    //         Food: 25,
-    //         Wood: null,
-    //         Gold: 0
-    //     }
-    // }
+
     var filter = {
         AgeFilter: null,
         CostFilter: {
@@ -26,19 +15,75 @@ function onFilterChanged() {
             Gold: null
         }
     };
-    // if (radiobutton.checked) {
-    //     filter.AgeFilter = radiobutton.id
-    // }
-    // data/age-of-empires-units.json dosyasını oku.
+
+
+    var age_radios = document.getElementsByClassName("age-radio");
+
+    for (var radio of age_radios) {
+        if (radio.checked) {
+            filter.AgeFilter = radio.id
+            break;
+        }
+    }
+
+    var woodCostContainer = document.getElementById("woodCost");
+    var woodCostCheckbox = woodCostContainer.children[0];
+    var woodCostSlider = woodCostContainer.children[1];
+
+    var woodSliderValue = document.getElementById("woodSliderValue");
+    woodSliderValue.innerHTML = woodCostSlider.value;
+
+    if (woodCostCheckbox.checked) {
+        console.log("AAAAAAAAAAAA");
+        filter.CostFilter.Wood = woodCostSlider.value;
+        woodSliderValue.style.visibility = "visible";
+    }
+    else {
+        woodSliderValue.style.visibility = "hidden";
+    }
+
+    var foodCostContainer = document.getElementById("foodCost");
+    var foodCostCheckbox = foodCostContainer.children[0];
+    var foodCostSlider = foodCostContainer.children[1];
+
+    var foodSliderValue = document.getElementById("foodSliderValue");
+    foodSliderValue.innerHTML = foodCostSlider.value;
+
+    if (foodCostCheckbox.checked) {
+        filter.CostFilter.Food = foodCostSlider.value;
+        foodSliderValue.style.visibility = "visible";
+    }
+    else {
+        foodSliderValue.style.visibility = "hidden";
+    }
+
+
+    var goldCostContainer = document.getElementById("goldCost");
+    var goldCostCheckbox = goldCostContainer.children[0];
+    var goldCostSlider = goldCostContainer.children[1];
+
+    var goldSliderValue = document.getElementById("goldSliderValue");
+    goldSliderValue.innerHTML = goldCostSlider.value;
+
+    if (goldCostCheckbox.checked) {
+        filter.CostFilter.Gold = goldCostSlider.value;
+        goldSliderValue.style.visibility = "visible";
+    }
+    else {
+        goldSliderValue.style.visibility = "hidden";
+    }
+
     fetch("../data/age-of-empires-units.json")
         .then(response => response.json())
-        .then(json => setTableData(json, null));
+        .then(json => setTableData(json, filter));
 }
+
 
 function setTableData(data, filter) {
     var unitsTable = document.getElementById("units-table");
+    unitsTable.innerHTML = '<tr><th style="background-color: black; color: white;" onclick="">id</th><th style="background-color: black; color: white;">name</th> <th style="background-color: black; color: white;">age</th><th style="background-color: black; color: white;">cost</th></tr>'
 
-
+    //console.log(filter);
     var filteredData = applyFilter(data.units, filter);
 
     for (var i = 0; i < filteredData.length; i++) {
@@ -76,7 +121,6 @@ function setTableData(data, filter) {
         row.appendChild(ageCell);
         row.appendChild(costCell);
 
-
         unitsTable.appendChild(row);
 
         //     <tr>
@@ -90,31 +134,48 @@ function setTableData(data, filter) {
     }
 }
 
+
+
 function applyFilter(units, filter) {
+    console.log(filter);
     var filteredData = units;
     if (filter != null) {
         filteredData = [];
         for (var unit of units) {
-            if (filter.AgeFilter != null) {
-                if (unit.age != filter.AgeFilter) {
+            if (filter.AgeFilter != null && filter.AgeFilter.toLowerCase() != "all") {
+                if (unit.age.toLowerCase() != filter.AgeFilter.toLowerCase()) {
+                    //console.log(unit.age.toLowerCase());
+                    //console.log(filter.AgeFilter.toLowerCase());
+                    //console.log(122);
                     continue;
+
                 }
+            }
+
+            if (unit.cost == null) {
+                continue;
             }
 
             if (filter.CostFilter.Food != null) {
-                if (unit.cost.Food == undefined || unit.cost.Food != filter.CostFilter.Food) {
+                if (unit.cost.Food == undefined || unit.cost.Food != parseInt(filter.CostFilter.Food)) {
+                    //console.log(130);
                     continue;
                 }
             }
 
+            //console.log(filter);
+            //console.log(unit);
             if (filter.CostFilter.Wood != null) {
-                if (unit.cost.Wood == undefined || unit.cost.Wood != filter.CostFilter.Wood) {
+                //console.log(unit.cost);
+                if (unit.cost.Wood == undefined || unit.cost.Wood != parseInt(filter.CostFilter.Wood)) {
+                    //console.log(137);
                     continue;
                 }
             }
 
             if (filter.CostFilter.Gold != null) {
-                if (unit.cost.Gold == undefined || unit.cost.Gold != filter.CostFilter.Gold) {
+                if (unit.cost.Gold == undefined || unit.cost.Gold != parseInt(filter.CostFilter.Gold)) {
+                    //console.log(144);
                     continue;
                 }
             }
@@ -125,4 +186,8 @@ function applyFilter(units, filter) {
     return filteredData;
 }
 
- 
+
+
+
+
+
